@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
+</head>
+
+<body>
+    <div style="margin-left: 20%;">
+
+        <div class="table-container">
+            <p>
+
+            </p>
+        </div>
+
+
+        <!------------------- START OF SECTION ------------------->
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+
+
+        <div class="table-container">
+            <h1 class="text-center text-bold srebrenica-title">Srebrenica</h1>
+            <h4 class="text-center">Official data of genocides and ethnic cleansing</h4>
+            <div class="text-center no-margine">** Number of victims in Srebrenica is highly questionable and debatable.
+                Serbian side and a lot of independent documentations claims that there was no more than <strong>3,000
+                    MALE</strong> killed.</div>
+            <table class="basic-table text-center">
+                <thead>
+                    <tr style="height: 50px;" id="locationNames">
+                    </tr>
+                </thead>
+                <tbody id="basicTable">
+
+                </tbody>
+            </table>
+            <!-- Grafs -->
+            <h4 class="text-center">Number of victims and percent of victims to entire population</h4>
+            <div class="examples column-charts">
+                <table class="charts-css column show-labels show-primary-axis data-spacing-1  show-10-secondary-axes "
+                    style="height: 200px;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Victims</th>
+                        </tr>
+                    </thead>
+                    <tbody id="populationTable">
+                    </tbody>
+                </table>
+                <div class="table-separator"></div>
+                <table
+                    class="charts-css column show-labels show-primary-axis reverse data-spacing-1 show-10-secondary-axes"
+                    style="height: 200px;">
+                    <thead>
+                    </thead>
+                    <tbody id="percentTable">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <style>
+            .no-margine {
+                margin: 0;
+            }
+
+            .table-container {
+                min-width: 600px;
+                max-width: 1000px;
+                margin-top: 50px;
+            }
+
+            .table-separator {
+                height: 3.75rem;
+            }
+
+            .text-name {
+                transform: translateX(-10px) translateY(15px) rotate(45deg);
+                -webkit-transform: translateX(-10px) translateY(15px) rotate(45deg);
+                width: 96px !important;
+                /* margin-top: 25px !important; */
+                bottom: calc(var(--labels-size)*-2.25 - var(--primary-axis-width)) !important;
+            }
+
+            .text-name-basic {
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                width: 86px !important;
+                /* margin-top: 25px !important; */
+                bottom: calc(var(--labels-size)*-2.25 - var(--primary-axis-width)) !important;
+            }
+
+            .text-center {
+                text-align: center;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            .basic-table {
+                border-bottom: 1px solid rgb(78, 78, 78);
+                font-size: 14px;
+            }
+
+            .text-bold {
+                font-weight: bold;
+            }
+
+            .srebrenica-title {
+                text-transform: uppercase;
+                background-color: #eb1031dc;
+                font-weight: bold;
+            }
+
+            .srebrenica-color {
+                background-color: red !important;
+                color: white !important;
+            }
+
+            .srebrenica-color-text {
+                color: rgb(172, 3, 3);
+            }
+
+            .graphs-padding {
+                padding: 1px !important;
+                min-width: 60px !important
+            }
+
+            @media only screen and (max-width: 600px) {
+                .text-name {
+                    transform: translateX(-15px) translateY(15px) rotate(45deg);
+                    -webkit-transform: translateX(-15px) translateY(15px) rotate(45deg);
+                    width: 96px !important;
+                }
+            }
+        </style>
+        <script>
+            var jsonData =
+                [
+                    {
+                        "name": "Srebrenica",
+                        "year": "1995",
+                        "population": 1902956,
+                        "victims": 8372
+                    },
+                    {
+                        "name": "Holocaust",
+                        "year": " 1941 - 1945",
+                        "population": 8593750,
+                        "victims": 5500000
+                    },
+                    {
+                        "name": "Armenian",
+                        "year": " 1915 - 1922",
+                        "population": 2403846,
+                        "victims": 1250000
+                    },
+                    {
+                        "name": "Circassia",
+                        "year": " 1864 - 1867",
+                        "population": 1755319,
+                        "victims": 1650000
+                    },
+                    {
+                        "name": "Poland",
+                        "year": " 1939 - 1945",
+                        "population": 27500000,
+                        "victims": 2200000
+                    },
+                    {
+                        "name": "Rwanda",
+                        "year": " 1994",
+                        "population": 1000000,
+                        "victims": 650000
+                    },
+                    {
+                        "name": "Greek",
+                        "year": " 1914 - 1922",
+                        "population": 2400000,
+                        "victims": 600000
+                    },
+                    {
+                        "name": "Cambodian",
+                        "year": " 1975 - 1979",
+                        "population": 6500000,
+                        "victims": 2100000
+                    },
+                    {
+                        "name": "Dzungar",
+                        "year": " 1755 - 1758",
+                        "population": 675000,
+                        "victims": 540000
+                    },
+                    {
+                        "name": "Congo",
+                        "year": " 2002 - 2003",
+                        "population": 158537,
+                        "victims": 67000
+                    },
+                    {
+                        "name": "Bangladesh",
+                        "year": " 1971",
+                        "population": 13750000,
+                        "victims": 1650000
+                    },
+                    {
+                        "name": "Guatamala",
+                        "year": " 1946 - 1973",
+                        "population": 250000,
+                        "victims": 100000
+                    },
+                    {
+                        "name": "Seik'nam",
+                        "year": " 1900",
+                        "population": 3810,
+                        "victims": 3200
+                    },
+                    {
+                        "name": "Moriori",
+                        "year": " 1835 - 1863",
+                        "population": 2000,
+                        "victims": 1900
+                    },
+                    {
+                        "name": "Myanmar",
+                        "year": " 2017",
+                        "population": 1300000,
+                        "victims": 1000000
+                    },
+
+                ];
+
+            initTables()
+
+            function initTables() {
+
+                var popable = document.getElementById("populationTable");
+                var percTable = document.getElementById("percentTable");
+                var bTable = document.getElementById("basicTable");
+                var lNames = document.getElementById("locationNames")
+
+                var tYear = "<tr>"
+                var tPop = "<tr>"
+                var tVictimis = "<tr>"
+                var tPercent = "<tr>"
+
+                for (let index = 0; index < jsonData.length; index++) {
+                    const genocide = jsonData[index];
+
+                    var percentFloat = Math.floor((genocide.victims / genocide.population) * 10000) / 10000;
+                    var percent = percentFloat * 100;
+                    var scaledVictims = genocide.victims / 10000000 * 5;
+
+                    if (percent > 1)
+                        percent = Math.floor(percent);
+
+                    if (scaledVictims > 3000000)
+                        scaledVictims = 3000000
+
+                    var formatedVictims = genocide.victims.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    var formatedPopulation = genocide.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+                    var color = "#03a9fcdb";
+                    if (index == 1)
+                        color = "linear-gradient(rgba(3,169,252,1) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 40%, rgba(3,169,252,1) 100%)";
+
+                    var apostorof = "";
+                    var srebrenicaColor = "";
+                    var srebrenicaTransform = "";
+                    var srebrenicaColortext = "";
+
+                    if (index == 0) {
+                        apostorof = "*"
+                        srebrenicaColor = " srebrenica-color";
+                        srebrenicaColortext = " srebrenica-color-text";
+                    }
+
+                    var alfa = "db";
+
+                    lNames.innerHTML += '<th class="text-name-basic ' + srebrenicaColortext + '">' + genocide.name + "</th>"
+
+                    tYear += "<td>" + genocide.year + "</td>"
+                    tPop += "<td>" + formatedPopulation + "</td>"
+                    tVictimis += "<td>" + apostorof + formatedVictims + apostorof + "</td>"
+                    tPercent += '<td class="text-bold">' + percent + "%</td>"
+
+
+                    var elementPopulation = `
+                            <tr>
+                                <th scope="row" class="text-name`+ srebrenicaColor + `">` + genocide.name + `</th>
+                                <td style="--size: `+ scaledVictims + `; --color: ` + color + `" class="graphs-padding"> <span class="data text-bold ` + srebrenicaTransform + `">` + apostorof + formatedVictims + apostorof + `</span> <span class="tooltip">population:` + formatedPopulation + `<br>victims:` + formatedVictims + `<br>percent:` + percent + `</span> </td>
+                                </tr>
+                                `
+                    popable.innerHTML += elementPopulation;
+
+                    var elementPercent = `
+                                <tr>
+                                    <td style="--size: `+ percentFloat + `; --color: #eb1031db" class="graphs-padding"> <span class="data text-bold">` + percent + `%</span> <span class="tooltip">population:` + formatedPopulation + `<br>victims:` + formatedVictims + `<br>percent:` + percent + `</span> </td>
+                                    </tr>
+                                    `
+
+                    percTable.innerHTML += elementPercent
+                }
+
+                bTable.innerHTML += tYear + "</tr>";
+                bTable.innerHTML += tPop + "</tr>";
+                bTable.innerHTML += tVictimis + "</tr>";
+                bTable.innerHTML += tPercent + "</tr>";
+
+            }
+
+        </script>
+
+        <!------------------- END OF SECTION ------------------->
+
+
+    </div>
+
+</body>
+
+</html>
